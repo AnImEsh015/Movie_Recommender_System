@@ -24,8 +24,8 @@ app.add_middleware(
 # We assume the backend is run from the root, or we use absolute paths. 
 # Better to use absolute path or relative to project root.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MOVIES_PKL_PATH = os.path.join(BASE_DIR, 'movies.pkl')
-DISTANCES_PKL_PATH = os.path.join(BASE_DIR, 'movies_distances.pkl')
+MOVIES_PKL_PATH = os.path.join(BASE_DIR, 'models', 'movies.pkl')
+DISTANCES_PKL_PATH = os.path.join(BASE_DIR, 'models', 'movies_distances.pkl')
 
 try:
     movies_df = pickle.load(open(MOVIES_PKL_PATH, 'rb'))
