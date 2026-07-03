@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #12131A;
+  --color-velvet: #1C1E29;
+  --color-marquee: #E8A33D;
+  --color-projector: #5B7FA6;
+  --color-paper: #F1EEE6;
+  --color-faint: #8B8C99;
+  
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --animate-slide-in: slideIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  --animate-shimmer: shimmer 1.5s infinite linear;
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  @keyframes slideIn {
+    0% { transform: translateX(30px) scale(0.95); opacity: 0; }
+    100% { transform: translateX(0) scale(1); opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+}
+
+@layer base {
+  html, body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  /* Sprocket hole perforations effect for the film strip */
+  .film-strip-rail {
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  .film-strip-rail::before,
+  .film-strip-rail::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background-image: radial-gradient(circle at 10px 6px, transparent 4px, var(--color-velvet) 5px);
+    background-size: 20px 12px;
+    background-position: 0 0;
+    opacity: 0.8;
+  }
+
+  .film-strip-rail::before {
+    top: 0;
+  }
+
+  .film-strip-rail::after {
+    bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    /* Vertical sprockets for mobile */
+    .film-strip-rail::before,
+    .film-strip-rail::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 12px;
+      height: auto;
+      background-image: radial-gradient(circle at 6px 10px, transparent 4px, var(--color-velvet) 5px);
+      background-size: 12px 20px;
+    }
+
+    .film-strip-rail::before {
+      left: 0;
+      right: auto;
+    }
+
+    .film-strip-rail::after {
+      display: none; /* Only left sprockets on mobile to save space */
+    }
+    
+    .film-strip-rail {
+      padding: 0 0 0 2rem;
+    }
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(to right, var(--color-velvet) 4%, var(--color-ink) 25%, var(--color-velvet) 36%);
+    background-size: 1000px 100%;
+  }
+  
+  /* Scrollbar hiding for the film rail */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
