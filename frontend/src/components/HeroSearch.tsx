@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 interface Movie {
-  id: int;
+  id: number;
   title: string;
 }
 
@@ -15,7 +15,7 @@ export function HeroSearch({ movies, onSearch, isLoading }: HeroSearchProps) {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>([]);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (query.trim() === '') {
