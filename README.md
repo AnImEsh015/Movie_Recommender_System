@@ -61,15 +61,31 @@ Movie Recommendation
 
 ### Backend
 
-- Python
+- Python 3
+- FastAPI
+- Uvicorn
+- Pandas
+- NumPy
+- Scikit-learn
+- Pickle
+- HTTPX
+- TMDB API
+- Render (Deployment)
 
 ### Frontend
 
-- Streamlit *(or Flask, depending on your project)*
+- React 18
+- Vite
+- TypeScript
+- Tailwind CSS
+- Custom CSS Animations
+- Axios (API Communication)
+- Vercel (Deployment)
 
 ### Deployment
 
 - Render
+- Vercel
 
 ---
 
